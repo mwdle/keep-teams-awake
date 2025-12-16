@@ -2,10 +2,10 @@
  * This is the interval, measured in seconds, at which to run the script.
  * In other words, this is how often the script should run.
  *
- * The default value is 10, so the mouse will be jiggled every 10 seconds.
+ * The default value is 240, so the mouse will be jiggled every 240 seconds (Teams marks you away after 5 minutes of inactivity).
  * If you want to change how often the script runs, modify this value.
  */
-const intervalSeconds = 10;
+const intervalSeconds = 240;
 
 /**
  * Convert from seconds to milliseconds, since javascript intervals
@@ -25,13 +25,13 @@ const intervalMillis = intervalSeconds * 1000;
  * That way we can trigger DOM listeners (eg. ones monitoring for user activity)
  * without getting in the user's way by legitimately moving the mouse.
  */
-function moveMouse(){
-	var evt = new MouseEvent("mousemove", {
-        view: window,
-        bubbles: true,
-        cancelable: true
-    });
-    document.dispatchEvent(evt);
+function moveMouse() {
+  var evt = new MouseEvent("mousemove", {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  });
+  document.dispatchEvent(evt);
 }
 
 /**
